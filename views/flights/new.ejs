@@ -1,0 +1,31 @@
+<%- include('../partials/head') %>
+
+<h2>Track a New Flight</h2>
+<form class="new-flight" action="/flights" method="POST">
+  <label>Airline:
+    <select name="airline">
+      <option value="American">American</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+    </select>
+  </label><br>
+  <label>Airport:
+    <select name="airport" >
+      <option value="AUS">AUS</option>
+      <option value="DWF">DWF</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label><br>
+  <label>Flight No:
+    <input type="number" name="flightNo">
+  </label><br>
+  <label>Departs:
+    <input type="datetime-local" name="departs" value="<%= departsDate %>">
+  </label><br>
+  <input type="submit" value="Add Flight">
+</form>
+
+
+<%- include('../partials/footer') %> 

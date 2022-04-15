@@ -1,8 +1,45 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+body{
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  font-family: 'Noto Serif', serif;
+  font: 14px;
+}
+p, h1, h2, h3, a, ul{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #222;
+}
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+}
+nav h1{
+  font-size: 3em;
+}
+.new-flight form{
+  max-width: 100px;
+  margin: 0 auto;
 }
 
-a {
-  color: #00B7FF;
+.new-flight label{
+  display: block;
+  margin-top: 24px;
+}
+
+td {
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  width: 800px;
+  max-width: 1200px;
+  min-width: 650px
 }
