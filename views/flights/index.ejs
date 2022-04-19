@@ -1,24 +1,21 @@
 <%- include('../partials/head.ejs') %>
   <h1>All Flights</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Airline</th>
-        <th>Airport</th>
-        <th>Flight No</th>
-        <th>Departs</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% flights.forEach(f => { %>
-        <tr>
-          <td><%= f.airline %> </td>
-          <td><%= f.airport %> </td>
-          <td><%= f.flightNo %> </td>
-          <td><%= f.departs %> </td>
-        </tr>
-      <% }) %>
-    </tbody>
-    <br>
-  </table>
+  <div class="flight-index">
+    <ul>
+      <li><h3>Airline</h3></li>
+      <li><h3>Airport</h3></li>
+      <li><h3>Flight Number</h3></li>
+      <li><h3>Departs</h3></li>
+      <li></li>
+    </ul>
+    <% flights.forEach(f => { %>
+      <ul style="<%= f.departs < new Date() ? 'color:red' : 'color:black' %>">
+        <li><%= f.airline %></li>
+        <li><%= f.airport %></li>
+        <li><%= f.flightNo %></li>
+        <li><%= f.departs.toDateString() %></li>
+        <li class="detail"><a href="/flights/<%= f.id %>">Details</a></li>
+      </ul>
+    <% }) %>
+  </div>
 <%- include('../partials/footer.ejs') %> 

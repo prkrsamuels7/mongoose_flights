@@ -4,6 +4,14 @@ module.exports = {
   index,
   new: newFlight,
   create,
+  show,
+};
+
+function show(req, res) {
+  Flight.findById(req.params.id, (err, flight) => {
+    let flightEnum = flight.schema.obj.airport.enum;
+    res.render('flights/show', { flight, title: 'Flight Details', flightEnum })
+  });
 };
 
 function create(req, res) {
@@ -31,6 +39,7 @@ function newFlight(req, res) {
 function index(req, res) {
   Flight.find({}, function(err, flights) {
     flights.sort((first, second) => first.departs - second.departs);
+    console.log(flights)
     res.render('flights/index', { flights });
   });
 };

@@ -1,0 +1,43 @@
+<%- include('../partials/head.ejs') %>
+<h1><%= title %></h1>
+
+    <div class="flight-details">
+      <ul>
+        <li><span>Airline:</span> <%= flight.airline %></li>
+        <li><span>Airport:</span> <%= flight.airport %></li>
+        <li><span>Flight Number:</span> <%= flight.flightNo %></li>
+        <li><span>Departs:</span> <%= flight.departs %></li>
+        <% flight.destinations.forEach(e => { %>
+          <li>
+            <span>Arrival:</span>
+            <%= e.airport %>
+            - 
+            <%= e.arrival %> 
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Add Destination</h3>
+      <form class="new-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
+
+        <label>Destination:
+          <select name="airport"> 
+            <% flightEnum.forEach((airport) => { %>
+              <% if (!flight.destinations.map((destination) => destination.airport).includes(airport)) { %> 
+                <option value="<%= airport %>"<%- flight.schema.obj.airport.default === airport ? 'selected' : '' %>><%= airport %></option>
+              <% } %> 
+            <% }); %> 
+          </select>
+        </label><br>
+
+        <label>Arrives:
+          <input type="datetime-local" name="arrival">
+        </label><br>
+
+        <input type="submit" value="Add Destination" class="add-dest-btn">
+      </form>
+    </div>
+    
+<%- include('../partials/footer.ejs') %> 
