@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
   index,
@@ -9,8 +10,10 @@ module.exports = {
 
 function show(req, res) {
   Flight.findById(req.params.id, (err, flight) => {
-    let flightEnum = flight.schema.obj.airport.enum;
-    res.render('flights/show', { flight, title: 'Flight Details', flightEnum })
+    Ticket.find({flight: flight._id}, (err, tickets) => {
+      let flightEnum = flight.schema.obj.airport.enum;
+      res.render('flights/show', { flight, title: 'Flight Details', flightEnum, tickets })
+    });
   });
 };
 
@@ -39,7 +42,6 @@ function newFlight(req, res) {
 function index(req, res) {
   Flight.find({}, function(err, flights) {
     flights.sort((first, second) => first.departs - second.departs);
-    console.log(flights)
     res.render('flights/index', { flights });
   });
 };

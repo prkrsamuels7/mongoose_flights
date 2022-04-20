@@ -79,3 +79,8 @@ input {
 .flight-details span {
   font-weight: bold;
 }
+
+.ticket {
+  display: flex;
+  justify-content: space-between;
+}
